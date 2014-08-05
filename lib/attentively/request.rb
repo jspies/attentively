@@ -20,7 +20,7 @@ module Attentively
 
       if response.status == 200
         response_json = JSON.parse(response.body)
-        return response_json
+        return response_json['posts']
       end
       
       {error: response.status}
