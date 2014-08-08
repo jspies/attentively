@@ -34,6 +34,7 @@ module Attentively
 
       def connection
         @conn ||= Faraday.new(url: endpoint) do |faraday|
+          faraday.ssl_version = :SSLv3
           faraday.request  :url_encoded
           faraday.response :logger
           faraday.adapter  Faraday.default_adapter
