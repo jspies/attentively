@@ -13,14 +13,14 @@ module Attentively
       self.access_token = access_token
     end
 
-    def post(params)
+    def post(params = {})
       response = connection.post do |request|
         request.body = params.merge(access_token: access_token)
       end
 
       if response.status == 200
         response_json = JSON.parse(response.body)
-        return response_json['posts']
+        return response_json
       end
       
       {error: response.status}
